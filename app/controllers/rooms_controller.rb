@@ -38,7 +38,7 @@ class RoomsController < ApplicationController
   end
 
   def show
-    @question_answers = QuestionAnswer.all
+    @question_answers = @room.question_answers
   end
 
 

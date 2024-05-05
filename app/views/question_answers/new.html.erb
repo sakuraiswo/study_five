@@ -1,5 +1,5 @@
 
-<%= link_to "Back", room_question_answers_path(@room) %>
+<%= link_to "Back", room_path(@room) %>
 <%= form_with model: [@room, @question_answer], local: true do |f| %>
   <%= f.text_area :question, class: 'question-form', placeholder: 'Question!' %>
   <%= f.text_area :answer, class: 'answer-form', placeholder: 'Answer!' %>

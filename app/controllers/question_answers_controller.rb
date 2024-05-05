@@ -4,7 +4,17 @@ class QuestionAnswersController < ApplicationController
   before_action :set_question_answer, only: [:edit, :update]
 
   def index
-    @question_answers = @room.question_answers
+    if params[:study_count]
+      if params[:study_count] == '5+'
+        @question_answers = @room.question_answers.where("study_count >= ?", 5)
+      else
+        @question_answers = @room.question_answers.where(study_count: params[:study_count])
+      end
+    else
+      @question_answers = @room.question_answers
+    end
+    count = @question_answers.count
+    @random_question_answer = @question_answers.offset(rand(count)).first if count > 0
   end
 
   def new
@@ -15,7 +25,7 @@ class QuestionAnswersController < ApplicationController
     @question_answer = @room.question_answers.new(question_answer_params)
     @question_answer.study_count = 0
     if @question_answer.save
-      redirect_to room_question_answers_path(@room)
+      redirect_to room_path(@room)
     else
       render :new, status: :unprocessable_entity
     end
@@ -27,7 +37,7 @@ class QuestionAnswersController < ApplicationController
 
   def update
     if @question_answer.update(question_answer_params)
-      redirect_to room_question_answers_path(@room)
+      redirect_to room_path(@room)
     else
       render :edit, status: :unprocessable_entity
     end
@@ -36,7 +46,7 @@ class QuestionAnswersController < ApplicationController
   def destroy
     question_answer = @room.question_answers.find(params[:id])
     question_answer.destroy
-    redirect_to room_question_answers_path(@room)
+    redirect_to room_path(@room)
   end
 
   private
