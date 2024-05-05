@@ -1,0 +1,7 @@
+
+
+  <%= form_with model: [@room, @question_answer], local: true do |f| %>
+    <%= f.text_area :question, class: 'question-form', placeholder: 'Question' %>
+    <%= f.text_area :answer, class: 'question-form', placeholder: 'Answer' %>
+    <%= f.submit 'Create', class: 'question-answer-create-submit' %>
+  <% end %>

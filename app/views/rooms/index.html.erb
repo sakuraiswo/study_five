@@ -6,6 +6,6 @@ toppage
 
 <% @rooms.each do |room| %>
   <%= link_to room.room_name, room_path(room) %>
-  <%= link_to "Room Edit", edit_room_path(room) %>
-  <%= link_to "Room Delete", room_path(room), data: { turbo_method: :delete } %>
+  <%= link_to "Edit", edit_room_path(room) %>
+  <%= link_to "Delete", room_path(room), data: { turbo_method: :delete } %>
 <% end %>
