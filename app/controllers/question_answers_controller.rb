@@ -34,8 +34,8 @@ class QuestionAnswersController < ApplicationController
   end
 
   def destroy
-    room = Room.find(params[:id])
-    room.destroy
+    question_answer = @room.question_answers.find(params[:id])
+    question_answer.destroy
     redirect_to room_question_answers_path(@room)
   end
 
@@ -46,7 +46,7 @@ class QuestionAnswersController < ApplicationController
   end
 
   def set_question_answer
-    @question_answer = QuestionAnswer.find(params[:id])
+    @question_answer = @room.question_answers.find(params[:id])
   end
 
   def question_answer_params
