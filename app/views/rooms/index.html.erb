@@ -1,0 +1,11 @@
+toppage
+
+
+
+<%= link_to "Room Create", new_room_path %>
+
+<% @rooms.each do |room| %>
+  <%= link_to room.room_name, room_path(room) %>
+  <%= link_to "Room Edit", edit_room_path(room) %>
+  <%= link_to "Room Delete", room_path(room), data: { turbo_method: :delete } %>
+<% end %>
