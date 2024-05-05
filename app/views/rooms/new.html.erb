@@ -2,5 +2,5 @@ Create Room
 <%= link_to "Back", root_path %>
 <%= form_with model: @room, local: true do |f| %>
   <%= f.text_field :room_name, class: 'room-name-form', placeholder: 'Room Name' %>
-  <%= f.submit 'Create', class: 'room-create-submit' %>
+  <%= f.submit @room.new_record? ? 'Create' : 'Update', class: 'room-create-submit' %>
 <% end %>
