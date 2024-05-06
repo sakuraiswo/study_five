@@ -1,11 +1,21 @@
-toppage
+<h1>トップページ</h1>
 
+<div class="room-create-link">
+<%= link_to "Create Room", new_room_path %>
+</div>
 
-
-<%= link_to "Room Create", new_room_path %>
+<br><br>
 
 <% @rooms.each do |room| %>
-  <%= link_to room.room_name, room_path(room) %>
-  <%= link_to "Edit", edit_room_path(room) %>
-  <%= link_to "Delete", room_path(room), data: { turbo_method: :delete } %>
+  <div class="room-list">
+    <div class="room-link">
+      ・<%= link_to room.room_name, room_path(room) %>
+    </div>
+    <div class="room-edit-link">
+      <%= link_to "Edit", edit_room_path(room) %>
+    </div>
+    <div class="room-delete-link">
+      <%= link_to "Delete", room_path(room), data: { turbo_method: :delete } %>
+    </div>
+  </div>
 <% end %>

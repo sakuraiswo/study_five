@@ -1,21 +1,59 @@
-show
-<%= link_to "Back", root_path %>
+<h1>ルームトップ</h1>
 
-<%= link_to "全問題", room_question_answers_path(@room) %>
-<%= link_to "問題 1回目", room_question_answers_path(@room, study_count: 0) %>
-<%= link_to "問題 2回目", room_question_answers_path(@room, study_count: 1) %>
-<%= link_to "問題 3回目", room_question_answers_path(@room, study_count: 2) %>
-<%= link_to "問題 4回目", room_question_answers_path(@room, study_count: 3) %>
-<%= link_to "問題 5回目", room_question_answers_path(@room, study_count: 4) %>
-<%= link_to "問題 6回目以上", room_question_answers_path(@room, study_count: "5+") %>
+<div class="back-link">
+  <%= link_to "Back", root_path %>
+</div>
+<br><br>
 
-<%= link_to "Create", new_room_question_answer_path(@room) %>
+<div class="practice-link-list">
+  <div class="practice-link">
+    <%= link_to "全問題", room_question_answers_path(@room) %>
+  </div>
+  <div class="practice-link">
+    <%= link_to "問題 1回目", room_question_answers_path(@room, study_count: 0) %>
+  </div>
+  <div class="practice-link">
+    <%= link_to "問題 2回目", room_question_answers_path(@room, study_count: 1) %>
+  </div>
+  <div class="practice-link">
+    <%= link_to "問題 3回目", room_question_answers_path(@room, study_count: 2) %>
+  </div>
+  <div class="practice-link">
+    <%= link_to "問題 4回目", room_question_answers_path(@room, study_count: 3) %>
+  </div>
+  <div class="practice-link">
+    <%= link_to "問題 5回目", room_question_answers_path(@room, study_count: 4) %>
+  </div>
+  <div class="practice-link">
+    <%= link_to "問題 6回目以上", room_question_answers_path(@room, study_count: "5+") %>
+  </div>
+</div>
+
+<br>
+
+<div class="question-create-link">
+  <%= link_to "Create Question", new_room_question_answer_path(@room) %>
+</div>
+
+<br><br>
 
 <% @question_answers.each do |question_answer| %>
-  <%= question_answer.question %>
-  <%= question_answer.answer %>
-  <%= question_answer.study_count %>
-  <%= link_to "Edit", edit_room_question_answer_path(@room, question_answer) %>
-  <%= link_to "Delete", room_question_answer_path(@room, question_answer), data: { turbo_method: :delete } %>
+  <div class="room-top-question-answer">
+    <div class="room-top-question">
+      <%= question_answer.question %>
+    </div>
+    <div class="room-top-answer">
+      <%= question_answer.answer %>
+    </div>
+    <div class="room-top-study_count">
+      <%= question_answer.study_count %>
+    </div>
+    <div class="question-edit-link">
+      <%= link_to "Edit", edit_room_question_answer_path(@room, question_answer) %>
+    </div>
+    <div class="question-delete-link">
+      <%= link_to "Delete", room_question_answer_path(@room, question_answer), data: { turbo_method: :delete } %>
+    </div>
+  </div>
 <% end %>
 

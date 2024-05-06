@@ -1,0 +1,144 @@
+
+/* -----------共通--------------- */
+
+
+a{
+  text-decoration: none;
+}
+
+.back-link{
+  border: solid 1px gray;
+  border-radius: 10px;
+  display: inline-block;
+  padding: 0 10px;
+  margin-left: 10px;
+  font-weight: bold;
+  background-color: gray;
+}
+.back-link a{
+  color: white;
+}
+
+
+
+/* --------------トップページ---------------- */
+
+.room-create-link{
+  border:solid 1px blue;
+  border-radius: 10px;
+  display: inline-block;
+  padding: 0 10px;
+  background-color: blue;
+  font-weight: bold;
+  margin-left: 25px;
+}
+.room-create-link a{
+  color: white;
+}
+
+.room-list{
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.room-link{
+  font-size: 150%;
+  margin-left: 10px;
+}
+.room-link a{
+  color:black;
+}
+
+.room-edit-link{
+  border: solid 1px green;
+  border-radius: 10px;
+  margin-left: 5px;
+  background-color: green;
+  font-weight: bold;
+  padding: 0 10px;
+
+}
+.room-edit-link a{
+  color: white;
+}
+
+.room-delete-link{
+  border: solid 1px red;
+  border-radius: 10px;
+  margin-left: 5px;
+  background-color: red;
+  font-weight: bold;
+  padding: 0 10px;
+}
+.room-delete-link a{
+  color: white;
+}
+
+
+
+/* ------------ルームトップページ------------ */
+
+
+.practice-link-list{
+  display: flex;
+}
+
+.practice-link{
+  border: solid 1px yellowgreen;
+  border-radius: 10px;
+  margin-left: 10px;
+  background-color: yellowgreen;
+  font-weight: bold;
+  padding: 0 10px;
+}
+.practice-link a{
+  color: white;
+}
+
+
+.question-create-link{
+  border:solid 1px blue;
+  border-radius: 10px;
+  display: inline-block;
+  padding: 0 10px;
+  background-color: blue;
+  font-weight: bold;
+  margin-left:10px;
+}
+.question-create-link a{
+  color: white;
+}
+
+
+
+
+.room-top-question-answer{
+  display: inline-block;
+}
+
+
+.question-edit-link{
+  border: solid 1px green;
+  border-radius: 10px;
+  margin-left: 5px;
+  background-color: green;
+  font-weight: bold;
+  padding: 0 10px;
+
+}
+.question-edit-link a{
+  color: white;
+}
+
+.question-delete-link{
+  border: solid 1px red;
+  border-radius: 10px;
+  margin-left: 5px;
+  background-color: red;
+  font-weight: bold;
+  padding: 0 10px;
+}
+.question-delete-link a{
+  color: white;
+}
