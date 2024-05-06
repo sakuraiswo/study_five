@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_05_05_071039) do
+ActiveRecord::Schema[7.0].define(version: 2024_05_06_062945) do
   create_table "question_answers", charset: "utf8", force: :cascade do |t|
     t.text "question"
     t.text "answer"
@@ -18,6 +18,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_05_071039) do
     t.bigint "room_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "title"
     t.index ["room_id"], name: "index_question_answers_on_room_id"
   end
 

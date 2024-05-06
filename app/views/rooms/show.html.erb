@@ -37,23 +37,21 @@
 
 <br><br>
 
-<% @question_answers.each do |question_answer| %>
-  <div class="room-top-question-answer">
-    <div class="room-top-question">
-      <%= question_answer.question %>
+<div class="room-top-question-answer-box">
+  <% @question_answers.each do |question_answer| %>
+    <div class="room-top-question-answer">
+      <div class="room-top-title">
+        <%= question_answer.title %>
+      </div>
+      <div class="room-top-study_count">
+        <%= question_answer.study_count %>
+      </div>
+      <div class="question-edit-link">
+        <%= link_to "Edit", edit_room_question_answer_path(@room, question_answer) %>
+      </div>
+      <div class="question-delete-link">
+        <%= link_to "Delete", room_question_answer_path(@room, question_answer), data: { turbo_method: :delete, turbo_confirm: "削除しますか？" } %>
+      </div>
     </div>
-    <div class="room-top-answer">
-      <%= question_answer.answer %>
-    </div>
-    <div class="room-top-study_count">
-      <%= question_answer.study_count %>
-    </div>
-    <div class="question-edit-link">
-      <%= link_to "Edit", edit_room_question_answer_path(@room, question_answer) %>
-    </div>
-    <div class="question-delete-link">
-      <%= link_to "Delete", room_question_answer_path(@room, question_answer), data: { turbo_method: :delete } %>
-    </div>
-  </div>
-<% end %>
-
+  <% end %>
+</div>

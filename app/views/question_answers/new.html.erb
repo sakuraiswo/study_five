@@ -1,6 +1,7 @@
 
 <%= link_to "Back", room_path(@room) %>
 <%= form_with model: [@room, @question_answer], local: true do |f| %>
+  <%= f.text_area :title, class: 'title-form', placeholder: 'Title!' %>
   <%= f.text_area :question, class: 'question-form', placeholder: 'Question!' %>
   <%= f.text_area :answer, class: 'answer-form', placeholder: 'Answer!' %>
   <% if @question_answer.persisted? %>

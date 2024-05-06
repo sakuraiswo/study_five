@@ -111,21 +111,42 @@ a{
 }
 
 
-
+.room-top-question-answer-box{
+  display: flex;
+  flex-wrap: wrap;
+}
 
 .room-top-question-answer{
-  display: inline-block;
+  width: 120px;
+  height: 200px;
+  border: solid 2px blue;
+  border-radius: 10px;
+  margin-left: 15px;
+  margin-top: 15px;
+  padding-bottom: 4px;
+}
+
+.room-top-title{
+  height: 120px;
+  overflow-y: hidden;
+}
+
+.room-top-study_count{
+  text-align: right;
+  font-weight: bold;
+  padding-right: 10px;
+  height: 26px;
 }
 
 
 .question-edit-link{
   border: solid 1px green;
   border-radius: 10px;
-  margin-left: 5px;
   background-color: green;
   font-weight: bold;
   padding: 0 10px;
-
+  text-align: center;
+  height: 25px;
 }
 .question-edit-link a{
   color: white;
@@ -134,10 +155,11 @@ a{
 .question-delete-link{
   border: solid 1px red;
   border-radius: 10px;
-  margin-left: 5px;
   background-color: red;
   font-weight: bold;
   padding: 0 10px;
+  text-align: center;
+  height: 25px;
 }
 .question-delete-link a{
   color: white;

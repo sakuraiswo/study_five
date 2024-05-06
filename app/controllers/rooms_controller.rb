@@ -38,7 +38,7 @@ class RoomsController < ApplicationController
   end
 
   def show
-    @question_answers = @room.question_answers
+    @question_answers = @room.question_answers.order(study_count: :asc)
   end
 
 

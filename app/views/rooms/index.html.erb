@@ -15,7 +15,7 @@
       <%= link_to "Edit", edit_room_path(room) %>
     </div>
     <div class="room-delete-link">
-      <%= link_to "Delete", room_path(room), data: { turbo_method: :delete } %>
+      <%= link_to "Delete", room_path(room), data: { turbo_method: :delete, turbo_confirm: "このルーム内のQ&Aもすべて無くなりますが、削除してよろしいですか？"} %>
     </div>
   </div>
 <% end %>
