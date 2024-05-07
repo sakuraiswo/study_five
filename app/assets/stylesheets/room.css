@@ -170,3 +170,29 @@ p {
 .question-delete-link a{
   color: white;
 }
+
+
+
+/* --------------ルーム作成ページ------------------ */
+
+
+.room-create-form-box{
+  margin: 20px 0 0 10px;
+  display: flex;
+}
+
+
+
+.room-name-form{
+  width: 300px;
+  border-radius: 5px;
+  font-size: 130%;
+}
+
+.room-create-submit-box{
+  margin-left: 10px;
+}
+.room-create-submit{
+  border-radius: 5px;
+  font-size: 130%;
+}

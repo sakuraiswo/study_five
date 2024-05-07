@@ -1,6 +1,15 @@
-Create Room
-<%= link_to "Back", root_path %>
+<h1>Create Room</h1>
+
+<div class="back-link">
+  <%= link_to "Back", root_path %>
+</div>
 <%= form_with model: @room, local: true do |f| %>
-  <%= f.text_field :room_name, class: 'room-name-form', placeholder: 'Room Name' %>
-  <%= f.submit @room.new_record? ? 'Create' : 'Update', class: 'room-create-submit' %>
+  <div class="room-create-form-box">
+    <div class="room-name-form-box">
+      <%= f.text_field :room_name, class: 'room-name-form', placeholder: 'Room Name' %>
+    </div>
+    <div class="room-create-submit-box">
+      <%= f.submit @room.new_record? ? 'Create' : 'Update', class: 'room-create-submit' %>
+    </div>
+  </div>
 <% end %>
