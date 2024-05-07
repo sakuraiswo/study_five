@@ -1,11 +1,42 @@
 
-<%= link_to "Back", room_path(@room) %>
-<%= form_with model: [@room, @question_answer], local: true do |f| %>
-  <%= f.text_area :title, class: 'title-form', placeholder: 'Title!' %>
-  <%= f.text_area :question, class: 'question-form', placeholder: 'Question!' %>
-  <%= f.text_area :answer, class: 'answer-form', placeholder: 'Answer!' %>
+<div class="question-create-update-top-text">
   <% if @question_answer.persisted? %>
-    <%= f.text_field :study_count, class: 'study_count-form' %>
+    <h1>Q&A編集ページ</h1>
+  <% else %>
+    <h1>Q&A作成ページ</h1>
   <% end %>
-  <%= f.submit @question_answer.new_record? ? 'Create' : 'Update', class: 'question-answer-submit' %>
+</div>
+
+<div class="back-link">
+  <%= link_to "Back", room_path(@room) %>
+</div>
+<br><br>
+<%= form_with model: [@room, @question_answer], local: true do |f| %>
+  <div class="question_answer-form-box">
+    <div class="title-form-box">
+      Title
+      <%= f.text_area :title, class: 'title-form', placeholder: 'Title!' %>
+    </div>
+    <div class="question-form-box">
+      Question
+      <%= f.text_area :question, class: 'question-form', placeholder: 'Question!' %>
+    </div>
+    <div class="answer-form-box">
+      Answer
+      <%= f.text_area :answer, class: 'answer-form', placeholder: 'Answer!' %>
+    </div>
+    <div class="study_count-form-submit-box">
+      <% if @question_answer.persisted? %>
+        <div class="study_count-form-box">
+          Count
+          <%= f.text_field :study_count, class: 'study_count-form' %>
+        </div>
+      <% end %>
+        <div class="question-answer-submit-box-space">
+        </div>
+        <div>
+        <%= f.submit @question_answer.new_record? ? 'Create' : 'Update', class: 'question-answer-submit' %>
+        </div>
+    </div>
+  </div>
 <% end %>

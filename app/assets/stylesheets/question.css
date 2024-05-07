@@ -1,0 +1,83 @@
+
+
+
+/* -----------問題入力フォーム------------- */
+
+
+
+
+
+
+.question_answer-form-box{
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+}
+
+
+.title-form-box{
+  font-size: 110%;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+}
+.title-form{
+  width: 500px;
+  height: 40px;
+  border-radius: 5px;
+}
+
+
+.question-form-box{
+  font-size: 110%;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+}
+.question-form{
+  width: 700px;
+  height: 120px;
+  border-radius: 5px;
+}
+
+
+.answer-form-box{
+  font-size: 110%;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+}
+.answer-form{
+  width: 700px;
+  height: 120px;
+  border-radius: 5px;
+}
+
+
+.study_count-form-submit-box{
+  font-size: 110%;
+  width: 700px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.study_count-form-box{
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+}
+.study_count-form{
+  width: 30px;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.question-answer-submit-box-space{
+  color: transparent;
+}
+.question-answer-submit{
+  width: 100px;
+  font-weight: bold;
+  border-radius: 5px;
+}
