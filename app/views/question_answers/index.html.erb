@@ -39,7 +39,7 @@
 <% if @random_question_answer %>
   <div class="question-answer-next-btn">
     <%= form_with url: increment_study_count_room_question_answer_path(@room, @random_question_answer), method: :patch do |form| %>
-      <%= form.submit "次のQ&A" %>
+      <%= form.submit "次のQ&A", class: 'question-answer-next-submit' %>
     <% end %>
   </div>
  <% end %>
