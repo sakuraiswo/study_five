@@ -6,8 +6,6 @@
 
 
 
-
-
 .question_answer-form-box{
   display: flex;
   flex-direction: column;
@@ -16,41 +14,47 @@
 
 
 .title-form-box{
-  font-size: 110%;
+  font-size: 120%;
   font-weight: bold;
   display: flex;
   flex-direction: column;
 }
 .title-form{
   width: 500px;
-  height: 40px;
+  min-height: 60px;
   border-radius: 5px;
+  font-size: 105%;
+  border: 1px solid green;
 }
 
 
 .question-form-box{
-  font-size: 110%;
+  font-size: 120%;
   font-weight: bold;
   display: flex;
   flex-direction: column;
 }
 .question-form{
   width: 700px;
-  height: 120px;
+  min-height: 180px;
   border-radius: 5px;
+  font-size: 105%;
+  border: 1px solid red;
 }
 
 
 .answer-form-box{
-  font-size: 110%;
+  font-size: 120%;
   font-weight: bold;
   display: flex;
   flex-direction: column;
 }
 .answer-form{
   width: 700px;
-  height: 120px;
+  min-height: 180px;
   border-radius: 5px;
+  font-size: 105%;
+  border: 1px solid blue;
 }
 
 
@@ -80,4 +84,81 @@
   width: 100px;
   font-weight: bold;
   border-radius: 5px;
+}
+
+
+
+/* ------------Q&Aページ----------------- */
+
+
+.q-a-top-text-box{
+  display: flex;
+  align-items: center;
+}
+
+.q-a-top-text{
+  font-size: 300%;
+  font-weight: bold;
+  margin-right: 20px;
+}
+
+.study-question-answer-box{
+  margin-left: 20px;
+}
+
+
+
+.study-question-answer-title-box{
+  margin-top: 20px;
+  font-size: 120%;
+  font-weight: bold;
+}
+.study-question-answer-title-text-box{
+  width: 500px;
+  min-height: 40px;
+  border: solid 2px green;
+  border-radius: 5px;
+  font-size: 90%;
+  font-weight: normal;
+}
+
+.study-question-answer-question-box{
+  margin-top: 20px;
+  font-size: 120%;
+  font-weight: bold;
+}
+.study-question-answer-question-text-box{
+  width: 700px;
+  min-height: 120px;
+  border: solid 2px red;
+  border-radius: 5px;
+  font-size: 90%;
+  font-weight: normal;
+}
+
+
+.study-question-answer-answer-box{
+  margin-top: 40px;
+  font-size: 120%;
+  font-weight: bold;
+}
+.study-question-answer-answer-text-box{
+  width: 700px;
+  min-height: 120px;
+  border: solid 2px blue;
+  border-radius: 5px;
+  color: transparent;
+  font-size: 90%;
+}
+
+
+.study-question-answer-answer-text-box:hover {
+  color:black;
+  font-weight: bold;
+}
+
+.question-answer-next-btn{
+  width: 700px;
+  margin-top: 60px;
+  text-align: right;
 }

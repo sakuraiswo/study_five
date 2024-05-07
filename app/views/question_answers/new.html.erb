@@ -15,15 +15,15 @@
   <div class="question_answer-form-box">
     <div class="title-form-box">
       Title
-      <%= f.text_area :title, class: 'title-form', placeholder: 'Title!' %>
+      <%= f.text_area :title, class: 'title-form', placeholder: '' %>
     </div>
     <div class="question-form-box">
       Question
-      <%= f.text_area :question, class: 'question-form', placeholder: 'Question!' %>
+      <%= f.text_area :question, class: 'question-form', placeholder: '' %>
     </div>
     <div class="answer-form-box">
       Answer
-      <%= f.text_area :answer, class: 'answer-form', placeholder: 'Answer!' %>
+      <%= f.text_area :answer, class: 'answer-form', placeholder: '' %>
     </div>
     <div class="study_count-form-submit-box">
       <% if @question_answer.persisted? %>

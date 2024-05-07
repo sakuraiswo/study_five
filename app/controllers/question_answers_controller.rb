@@ -43,6 +43,12 @@ class QuestionAnswersController < ApplicationController
     end
   end
 
+  def increment_study_count
+    @random_question_answer = QuestionAnswer.find(params[:id])
+    @random_question_answer.increment!(:study_count)
+    redirect_to room_question_answer_path(@room, @random_question_answer)
+  end
+
   def destroy
     question_answer = @room.question_answers.find(params[:id])
     question_answer.destroy

@@ -39,6 +39,7 @@ class RoomsController < ApplicationController
 
   def show
     @question_answers = @room.question_answers.order(study_count: :asc)
+    question_count
   end
 
 
@@ -50,6 +51,10 @@ class RoomsController < ApplicationController
 
   def room_params
     params.require(:room).permit(:room_name, :room_number)
+  end
+
+  def question_count
+    @study_counts = @question_answers.group(:study_count).count
   end
 
 end

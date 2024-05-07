@@ -1,9 +1,45 @@
-Q&A index
-
-<%= link_to "Back", room_path(@room) %>
+<div class="q-a-top-text-box">
+  <div class="q-a-top-text">
+    Q&A
+  </div>
+  <% if @random_question_answer %>
+    <%= @random_question_answer.study_count+1 %>回目の問題
+  <% end %>
+</div>
+<br>
+<div class="back-link">
+  <%= link_to "Back", room_path(@room) %>
+</div>
+<br><br>
+<div class="study-question-answer-box">
+  <% if @random_question_answer %>
+    <div class="study-question-answer-title-box">
+      Title
+      <div class="study-question-answer-title-text-box">
+        <%= simple_format(@random_question_answer.title) %>
+      </div>
+    </div>
+    <div class="study-question-answer-question-box">
+      Question
+      <div class="study-question-answer-question-text-box">
+        <%= simple_format(@random_question_answer.question) %>
+      </div>
+    </div>
+    <div class="study-question-answer-answer-box">
+      Answer
+      <div class="study-question-answer-answer-text-box">
+        <%= simple_format(@random_question_answer.answer) %>
+      </div>
+    </div>
+  <% else %>
+    <p>問題が見つかりません。</p>
+  <% end %>
+</div>
 
 <% if @random_question_answer %>
-  <%= @random_question_answer.question %>
-<% else %>
-  <p>問題が見つかりません。</p>
-<% end %>
+  <div class="question-answer-next-btn">
+    <%= form_with url: increment_study_count_room_question_answer_path(@room, @random_question_answer), method: :patch do |form| %>
+      <%= form.submit "次のQ&A" %>
+    <% end %>
+  </div>
+ <% end %>
