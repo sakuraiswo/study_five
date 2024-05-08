@@ -26,7 +26,15 @@
       <%= f.text_area :answer, class: 'answer-form', placeholder: '' %>
     </div>
     <div class="image-upload-form-box">
-      <label>Images (Up to 3)</label>
+      <% if @question_answer.images.attached? %>
+        <% @question_answer.images.each do |image| %>
+          <div class="existing-image">
+            <%= image_tag(image) %>
+            <%= check_box_tag "question_answer[images_to_delete][]", image.id %>
+            <%= label_tag "削除する" %>
+          </div>
+        <% end %>
+      <% end %>
       <%= f.file_field :images, multiple: true, accept: 'image/png,image/jpeg', direct_upload: true, class: 'image-form' %>
     </div>
 

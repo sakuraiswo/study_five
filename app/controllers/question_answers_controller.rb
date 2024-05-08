@@ -36,7 +36,17 @@ class QuestionAnswersController < ApplicationController
   end
 
   def update
-    if @question_answer.update(question_answer_params)
+    if params[:question_answer][:images_to_delete]
+      params[:question_answer][:images_to_delete].each do |image_id|
+        image = @question_answer.images.find(image_id)
+        image.purge if image
+      end
+    end
+    unless params[:question_answer][:images].reject(&:blank?).empty?
+      @question_answer.images.attach(params[:question_answer][:images].reject(&:blank?))
+    end
+    updated_params = question_answer_params.except(:images, :images_to_delete)
+    if @question_answer.update(updated_params)
       redirect_to room_path(@room)
     else
       render :edit, status: :unprocessable_entity
@@ -66,7 +76,7 @@ class QuestionAnswersController < ApplicationController
   end
 
   def question_answer_params
-    params.require(:question_answer).permit(:question, :answer, :title, :study_count, :room_id, images: [])
+    params.require(:question_answer).permit(:question, :answer, :title, :study_count, :room_id, images: [], images_to_delete: [])
   end
 
 
