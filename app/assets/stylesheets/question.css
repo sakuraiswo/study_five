@@ -143,19 +143,45 @@
   font-size: 120%;
   font-weight: bold;
 }
-.study-question-answer-answer-text-box{
-  width: 700px;
-  min-height: 120px;
+
+.study-question-answer-answer-text-and-images-box-border{
   border: solid 2px blue;
   border-radius: 5px;
+  width: 700px;
+  min-height: 120px;
+}
+
+.study-question-answer-answer-text-and-images-box{
+  width: 700px;
+  min-height: 120px;
   color: transparent;
+  opacity: 0;
   font-size: 90%;
 }
 
 
-.study-question-answer-answer-text-box:hover {
+.study-question-answer-answer-text-and-images-box:hover {
   color:black;
   font-weight: bold;
+  opacity: 1;
+}
+
+.study-question-answer-multi-images-box{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.study-question-answer-image-box{
+  max-width: 340px;
+  border: solid 1px lightblue;
+  border-radius: 5px;
+}
+.study-question-answer-image-box img{
+  max-width: 340px;
+}
+.study-question-answer-image-box img:hover {
+  transform: scale(2);
+  transform-origin: left bottom;
 }
 
 .question-answer-next-btn{

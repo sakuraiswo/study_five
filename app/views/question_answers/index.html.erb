@@ -27,14 +27,34 @@
     </div>
     <div class="study-question-answer-answer-box">
       Answer
-      <div class="study-question-answer-answer-text-box">
-        <%= simple_format(@random_question_answer.answer) %>
+      <div class="study-question-answer-answer-text-and-images-box-border">
+        <div class="study-question-answer-answer-text-and-images-box">
+          <div class="study-question-answer-answer-text-box">
+            <%= simple_format(@random_question_answer.answer) %>
+          </div>
+          <div class="study-question-answer-multi-images-box">
+            <% @random_question_answer.images.each do |image| %>
+              <div class="study-question-answer-image-box">
+                <%= image_tag image %>
+              </div>
+            <% end %>
+          </div>
+        </div>
       </div>
     </div>
+
+
+
+
+
   <% else %>
     <p>問題が見つかりません。</p>
   <% end %>
 </div>
+
+
+
+
 
 <% if @random_question_answer %>
   <div class="question-answer-next-btn">

@@ -134,8 +134,32 @@ p {
 }
 
 .room-top-title{
-  height: 120px;
+  height: 20px;
   overflow-y: hidden;
+  font-size: 90%;
+  font-weight: bold;
+}
+.room-top-title:hover {
+  overflow-y: visible;
+  text-shadow:
+  -1px -1px 0 #fff,  /* 左上の影 */
+  1px -1px 0 #fff,   /* 右上の影 */
+  -1px 1px 0 #fff,   /* 左下の影 */
+  1px 1px 0 #fff;    /* 右下の影 */
+}
+
+.room-top-question{
+  height: 100px;
+  overflow-y: hidden;
+  font-size:100%;
+}
+.room-top-question:hover {
+  overflow-y: visible;
+  text-shadow:
+  -1px -1px 0 #fff,  /* 左上の影 */
+  1px -1px 0 #fff,   /* 右上の影 */
+  -1px 1px 0 #fff,   /* 左下の影 */
+  1px 1px 0 #fff;    /* 右下の影 */
 }
 
 .room-top-study_count{

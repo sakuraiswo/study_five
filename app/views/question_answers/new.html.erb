@@ -25,6 +25,12 @@
       Answer
       <%= f.text_area :answer, class: 'answer-form', placeholder: '' %>
     </div>
+    <div class="image-upload-form-box">
+      <label>Images (Up to 3)</label>
+      <%= f.file_field :images, multiple: true, accept: 'image/png,image/jpeg', direct_upload: true, class: 'image-form' %>
+    </div>
+
+
     <div class="study_count-form-submit-box">
       <% if @question_answer.persisted? %>
         <div class="study_count-form-box">

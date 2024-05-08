@@ -66,7 +66,7 @@ class QuestionAnswersController < ApplicationController
   end
 
   def question_answer_params
-    params.require(:question_answer).permit(:question, :answer, :title, :study_count, :room_id)
+    params.require(:question_answer).permit(:question, :answer, :title, :study_count, :room_id, images: [])
   end
 
 
