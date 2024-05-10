@@ -1,24 +1,9 @@
 # README
+繰り返し学習用アプリ
+Study Five（スタディファイブ）
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 概要
+・問題ページを開くと、問題がランダムで表示される。
+・次の問題を選択すると、終えた問題の学習回数が１加算される。
+・５回の学習までは、学習回数が１加算されるごとに、表示ページが移っていく。
+・学習者は、確実性を持って５回の繰り返し学習を行うことができる。
