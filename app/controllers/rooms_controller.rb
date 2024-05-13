@@ -1,6 +1,7 @@
 class RoomsController < ApplicationController
 
   before_action :set_room, only: [:edit, :update, :show]
+  before_action :return_action, only: [:edit, :update, :show]
 
   def index
     @rooms = Room.all
@@ -32,6 +33,7 @@ class RoomsController < ApplicationController
   end
 
   def destroy
+    return unless current_user.id == room.user_id
     room = Room.find(params[:id])
     room.destroy
     redirect_to root_path
@@ -50,11 +52,15 @@ class RoomsController < ApplicationController
   end
 
   def room_params
-    params.require(:room).permit(:room_name, :room_number)
+    params.require(:room).permit(:room_name, :room_number).merge(user_id: current_user.id)
   end
 
   def question_count
     @study_counts = @question_answers.group(:study_count).count
+  end
+
+  def return_action
+    return unless current_user.id == @room.user_id
   end
 
 end

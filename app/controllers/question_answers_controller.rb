@@ -2,6 +2,7 @@ class QuestionAnswersController < ApplicationController
 
   before_action :set_room
   before_action :set_question_answer, only: [:edit, :update]
+  before_action :return_action
 
   def index
     if params[:study_count]
@@ -79,5 +80,8 @@ class QuestionAnswersController < ApplicationController
     params.require(:question_answer).permit(:question, :answer, :title, :study_count, :room_id, images: [], images_to_delete: [])
   end
 
+  def return_action
+    return unless current_user.id == @room.user_id
+  end
 
 end
