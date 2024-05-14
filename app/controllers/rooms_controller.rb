@@ -33,8 +33,8 @@ class RoomsController < ApplicationController
   end
 
   def destroy
-    return unless current_user.id == room.user_id
     room = Room.find(params[:id])
+    return unless current_user.id == room.user_id
     room.destroy
     redirect_to root_path
   end
