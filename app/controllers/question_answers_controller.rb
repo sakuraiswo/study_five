@@ -50,7 +50,7 @@ class QuestionAnswersController < ApplicationController
     if @question_answer.update(updated_params)
       redirect_to room_path(@room)
     else
-      render :edit, status: :unprocessable_entity
+      render :new, status: :unprocessable_entity
     end
   end
 
