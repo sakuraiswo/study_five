@@ -37,16 +37,36 @@ class QuestionAnswersController < ApplicationController
   end
 
   def update
-    if params[:question_answer][:images_to_delete]
-      params[:question_answer][:images_to_delete].each do |image_id|
-        image = @question_answer.images.find(image_id)
+    # 質問用の画像削除
+    if params[:question_answer][:question_images_to_delete].present?
+      params[:question_answer][:question_images_to_delete].each do |image_id|
+        image = @question_answer.question_images.find(image_id)
         image.purge if image
       end
     end
-    unless params[:question_answer][:images].reject(&:blank?).empty?
-      @question_answer.images.attach(params[:question_answer][:images].reject(&:blank?))
+
+    # 回答用の画像削除
+    if params[:question_answer][:answer_images_to_delete].present?
+      params[:question_answer][:answer_images_to_delete].each do |image_id|
+        image = @question_answer.answer_images.find(image_id)
+        image.purge if image
+      end
     end
-    updated_params = question_answer_params.except(:images, :images_to_delete)
+
+    # 質問用の新しい画像を追加
+    unless params[:question_answer][:question_images].reject(&:blank?).empty?
+      @question_answer.question_images.attach(params[:question_answer][:question_images].reject(&:blank?))
+    end
+
+    # 回答用の新しい画像を追加
+    unless params[:question_answer][:answer_images].reject(&:blank?).empty?
+      @question_answer.answer_images.attach(params[:question_answer][:answer_images].reject(&:blank?))
+    end
+
+    # パラメータの更新
+    updated_params = question_answer_params.except(:question_images, :question_images_to_delete, :answer_images, :answer_images_to_delete)
+    
+
     if @question_answer.update(updated_params)
       redirect_to room_path(@room)
     else
@@ -77,7 +97,7 @@ class QuestionAnswersController < ApplicationController
   end
 
   def question_answer_params
-    params.require(:question_answer).permit(:question, :answer, :title, :study_count, :room_id, images: [], images_to_delete: [])
+    params.require(:question_answer).permit(:question, :answer, :title, :study_count, :room_id, question_images: [], question_images_to_delete: [], answer_images: [], answer_images_to_delete: [])
   end
 
   def return_action

@@ -21,21 +21,41 @@
       Question
       <%= f.text_area :question, class: 'question-form', placeholder: '' %>
     </div>
-    <div class="answer-form-box">
-      Answer
-      <%= f.text_area :answer, class: 'answer-form', placeholder: '' %>
-    </div>
-    <div class="image-upload-form-box">
-      <% if @question_answer.images.attached? %>
-        <% @question_answer.images.each do |image| %>
+
+<%# 問題用のイメージアップロードフォーム %>
+    <div class="question-image-upload-form-box">
+      <strong>Question Images:</strong>
+      <% if @question_answer.question_images.attached? %>
+        <% @question_answer.question_images.each do |image| %>
           <div class="existing-image">
             <%= image_tag(image) %>
-            <%= check_box_tag "question_answer[images_to_delete][]", image.id %>
+            <%= check_box_tag "question_answer[question_images_to_delete][]", image.id %>
             <%= label_tag "削除する" %>
           </div>
         <% end %>
       <% end %>
-      <%= f.file_field :images, multiple: true, accept: 'image/png,image/jpeg', direct_upload: true, class: 'image-form' %>
+      <%= f.file_field :question_images, multiple: true, accept: 'image/png,image/jpeg', direct_upload: true, class: 'image-form' %>
+    </div>
+
+    <div class="answer-form-box">
+      Answer
+      <%= f.text_area :answer, class: 'answer-form', placeholder: '' %>
+    </div>
+
+
+<%# 解答用のイメージアップロードフォーム %>
+        <div class="answer-image-upload-form-box" style="background-color: #e8f5e9;">
+      <strong>Answer Images:</strong>
+      <% if @question_answer.answer_images.attached? %>
+        <% @question_answer.answer_images.each do |image| %>
+          <div class="existing-image">
+            <%= image_tag(image) %>
+            <%= check_box_tag "question_answer[answer_images_to_delete][]", image.id %>
+            <%= label_tag "削除する" %>
+          </div>
+        <% end %>
+      <% end %>
+      <%= f.file_field :answer_images, multiple: true, accept: 'image/png,image/jpeg', direct_upload: true, class: 'image-form' %>
     </div>
 
 
