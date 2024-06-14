@@ -125,7 +125,7 @@ p {
 
 .room-top-question-answer{
   width: 120px;
-  height: 200px;
+  height: 270px;
   border: solid 2px blue;
   border-radius: 10px;
   margin-left: 15px;
@@ -154,6 +154,16 @@ p {
   font-size:100%;
 }
 .room-top-question:hover {
+  overflow-y: auto;
+}
+
+.room-top-answer{
+  height: 70px;
+  overflow-y: hidden;
+  font-size:100%;
+  color: silver;
+}
+.room-top-answer:hover {
   overflow-y: auto;
 }
 
