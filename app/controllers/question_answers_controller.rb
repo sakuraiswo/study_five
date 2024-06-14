@@ -7,8 +7,10 @@ class QuestionAnswersController < ApplicationController
   def index
     @study_count_plus1 = (params[:study_count].to_i)+1
     if params[:study_count]
-      if params[:study_count] == '5+'
-        @question_answers = @room.question_answers.where("study_count >= ?", 5)
+      if params[:study_count] == '10+'
+        @question_answers = @room.question_answers.where("study_count >= ?", 10)
+      elsif params[:study_count] == '5~9'
+        @question_answers = @room.question_answers.where(study_count: 5..9)
       else
         @question_answers = @room.question_answers.where(study_count: params[:study_count])
       end
