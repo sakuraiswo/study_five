@@ -5,6 +5,7 @@ class QuestionAnswersController < ApplicationController
   before_action :return_action
 
   def index
+    @study_count_plus1 = (params[:study_count].to_i)+1
     if params[:study_count]
       if params[:study_count] == '5+'
         @question_answers = @room.question_answers.where("study_count >= ?", 5)
