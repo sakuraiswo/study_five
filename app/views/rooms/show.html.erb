@@ -56,7 +56,15 @@
   </div>
   <div class="practice-link">
     <div class="practice-count-display">
-      <%= link_to "問題 6回目以上", room_question_answers_path(@room, study_count: "5+") %>
+      <%= link_to "問題 6~10回目", room_question_answers_path(@room, study_count: "5~9") %>
+    </div>
+    <div class="practice-question-count">
+      <%= @study_counts.select { |key, value| key >= 5 }.values.sum || 0 %>問
+    </div>
+  </div>
+  <div class="practice-link">
+    <div class="practice-count-display">
+      <%= link_to "問題 11回目以上", room_question_answers_path(@room, study_count: "10+") %>
     </div>
     <div class="practice-question-count">
       <%= @study_counts.select { |key, value| key >= 5 }.values.sum || 0 %>問

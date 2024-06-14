@@ -64,8 +64,10 @@
   <% else %>
     <% if @study_count_plus1 < 6 %>
       <p><%= @study_count_plus1 %>回目の問題が見つかりません。</p>
+    <% elsif @study_count_plus1 < 11 %>
+      <p>6~10回目の問題が見つかりません。</p>
     <% else %>
-      <p><%= @study_count_plus1 %>回目以降の問題が見つかりません。</p>
+      <p>11回目以降の問題が見つかりません。</p>
     <% end %>
   <% end %>
 </div>
