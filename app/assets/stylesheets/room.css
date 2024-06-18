@@ -117,6 +117,29 @@ p {
   color: white;
 }
 
+.question_answer-search-label{
+  margin-left: 20px;
+  font-weight: bold;
+  font-size: 110%;
+}
+.question_answer-search-title-list{
+  border: solid 2px blue;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.question_answer-search-do-botton{
+  border: solid 2px blue;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.question_answer-search-do-botton:hover{
+  border: solid 2px lightblue;
+  color: white;
+  background-color: blue;
+}
+
+
 
 .room-top-question-answer-box{
   display: flex;
