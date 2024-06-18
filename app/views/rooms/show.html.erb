@@ -81,11 +81,11 @@
 <br><br>
 
 <%= form_with url: room_path(@room), method: :get, local: true do %>
-  <div class="field">
+  <div class="search-field">
     <%= label_tag :title, "Select a title" %>
     <%= select_tag :title, options_from_collection_for_select(@titles, 'title', 'title', selected: params[:title]), include_blank: true %>
+    <%= submit_tag "Search" %>
   </div>
-  <%= submit_tag "Search" %>
 <% end %>
 
 <div class="room-top-question-answer-box">

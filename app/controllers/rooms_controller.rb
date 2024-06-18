@@ -46,7 +46,7 @@ class RoomsController < ApplicationController
       @question_answers = @room.question_answers.order(study_count: :asc)
     end
 
-    @titles = @room.question_answers.select(:title).distinct
+    @titles = @room.question_answers.select(:title).distinct.order(:title)
     question_count
   end
 
