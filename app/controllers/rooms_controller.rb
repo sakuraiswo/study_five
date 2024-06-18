@@ -40,7 +40,13 @@ class RoomsController < ApplicationController
   end
 
   def show
-    @question_answers = @room.question_answers.order(study_count: :asc)
+    if params[:title].present?
+      @question_answers = @room.question_answers.where(title: params[:title]).order(study_count: :asc)
+    else
+      @question_answers = @room.question_answers.order(study_count: :asc)
+    end
+
+    @titles = @room.question_answers.select(:title).distinct
     question_count
   end
 
