@@ -1,0 +1,79 @@
+{
+  "name": "study_five",
+  "version": "1.0.0",
+  "description": "繰り返し学習用アプリ Study Five（スタディファイブ）",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder",
+    "postbuild": "chmod +x dist/study_five-1.0.0.AppImage",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": {
+    "name": "Yutaka Sakurai",
+    "email": "sakuraisworks@gmail.com"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^31.0.1",
+    "electron-builder": "^24.13.3"
+  },
+  "dependencies": {
+    "portfinder": "^1.0.32"
+  },
+  "build": {
+    "appId": "com.example.yourapp",
+    "mac": {
+      "category": "public.app-category.productivity",
+      "icon": "build/icons/icon.icns",
+      "target": "dmg"
+    },
+    "dmg": {
+      "icon": "build/icons/icon.icns",
+      "contents": [
+        {
+          "x": 130,
+          "y": 220
+        },
+        {
+          "x": 410,
+          "y": 220,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "build/icons/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "StudyFive"
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ],
+      "icon": "build/icons",
+      "category": "Utility",
+      "desktop": {
+        "Name": "StudyFive",
+        "Comment": "Your application description",
+        "Icon": "icon",
+        "Terminal": "false",
+        "Type": "Application",
+        "Categories": "Utility;"
+      }
+    },
+    "directories": {
+      "buildResources": "build",
+      "output": "dist"
+    }
+  }
+}
