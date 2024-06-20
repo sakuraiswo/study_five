@@ -144,9 +144,11 @@ p {
   background-color: blue;
 }
 
-/* .question_answer-word-search-box{
-
-} */
+.question_answer-word-search-bar{
+  border: solid 2px blue;
+  border-radius: 10px;
+  cursor: text;
+}
 
 
 

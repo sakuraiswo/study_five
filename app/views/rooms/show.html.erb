@@ -93,7 +93,7 @@
     <div class="search-field">
       <%= hidden_field_tag :title, params[:title] %>
       <%= label_tag :word, "Word Search", class: 'question_answer-search-label' %>
-      <%= text_field_tag :word, params[:word], class: 'question_answer-search-title-list', value: params[:word], placeholder: '' %>
+      <%= text_field_tag :word, params[:word], class: 'question_answer-word-search-bar', value: params[:word], placeholder: '' %>
       <%= submit_tag "Word Search", class: 'question_answer-search-do-botton' %>
     </div>
   <% end %>
