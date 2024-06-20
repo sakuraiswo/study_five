@@ -1,5 +1,6 @@
 class RoomsController < ApplicationController
 
+  include Searchable
   before_action :set_room, only: [:edit, :update, :show]
   before_action :return_action, only: [:edit, :update, :show]
 
@@ -41,11 +42,18 @@ class RoomsController < ApplicationController
 
   def show
     if params[:title].present?
-      @question_answers = @room.question_answers.where(title: params[:title]).order(study_count: :asc)
+      session[:search_title] = params[:title]
     else
-      @question_answers = @room.question_answers.order(study_count: :asc)
+      session.delete(:search_title)
     end
 
+    if params[:word].present?
+      session[:search_word] = params[:word]
+    else
+      session.delete(:search_word)
+    end
+
+    @question_answers = search_question_answers(@room.question_answers.order(study_count: :asc))
     @titles = @room.question_answers.select(:title).distinct.order(:title)
     question_count
   end

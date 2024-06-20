@@ -1,22 +1,32 @@
 class QuestionAnswersController < ApplicationController
 
+  include Searchable
   before_action :set_room
   before_action :set_question_answer, only: [:edit, :update]
   before_action :return_action
 
   def index
-    @study_count_plus1 = (params[:study_count].to_i)+1
+    @study_count_plus1 = (params[:study_count].to_i) + 1
+    @question_answers = @room.question_answers
+
     if params[:study_count]
       if params[:study_count] == '10+'
-        @question_answers = @room.question_answers.where("study_count >= ?", 10)
+        @question_answers = @question_answers.where("study_count >= ?", 10)
       elsif params[:study_count] == '5~9'
-        @question_answers = @room.question_answers.where(study_count: 5..9)
+        @question_answers = @question_answers.where(study_count: 5..9)
       else
-        @question_answers = @room.question_answers.where(study_count: params[:study_count])
+        @question_answers = @question_answers.where(study_count: params[:study_count])
       end
-    else
-      @question_answers = @room.question_answers
     end
+
+    if session[:search_title].present?
+      @question_answers = @question_answers.where(title: session[:search_title])
+    end
+
+    if session[:search_word].present?
+      @question_answers = @question_answers.where("title LIKE :word OR question LIKE :word OR answer LIKE :word", word: "%#{session[:search_word]}%")
+    end
+
     count = @question_answers.count
     @random_question_answer = @question_answers.offset(rand(count)).first if count > 0
   end
@@ -29,7 +39,7 @@ class QuestionAnswersController < ApplicationController
     @question_answer = @room.question_answers.new(question_answer_params)
     @question_answer.study_count = 0
     if @question_answer.save
-      redirect_to room_path(@room)
+      redirect_to room_path(@room, title: session[:search_title], word: session[:search_word])
     else
       render :new, status: :unprocessable_entity
     end
@@ -71,7 +81,7 @@ class QuestionAnswersController < ApplicationController
     
 
     if @question_answer.update(updated_params)
-      redirect_to room_path(@room)
+      redirect_to room_path(@room, title: session[:search_title], word: session[:search_word])
     else
       render :new, status: :unprocessable_entity
     end
@@ -86,7 +96,7 @@ class QuestionAnswersController < ApplicationController
   def destroy
     question_answer = @room.question_answers.find(params[:id])
     question_answer.destroy
-    redirect_to room_path(@room)
+    redirect_to room_path(@room, title: session[:search_title], word: session[:search_word])
   end
 
   private

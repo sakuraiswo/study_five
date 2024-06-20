@@ -8,7 +8,7 @@
 </div>
 
 <div class="back-link">
-  <%= link_to "Back", room_path(@room) %>
+  <%= link_to "Back", room_path(@room, title: session[:search_title], word: session[:search_word]) %>
 </div>
 <br><br>
 <%= form_with model: [@room, @question_answer], local: true do |f| %>
@@ -69,6 +69,8 @@
         <div class="question-answer-submit-box-space">
         </div>
         <div>
+        <%= hidden_field_tag :title, session[:search_title] %>
+        <%= hidden_field_tag :word, session[:search_word] %>
         <%= f.submit @question_answer.new_record? ? 'Create' : 'Update', class: 'question-answer-submit' %>
         </div>
     </div>

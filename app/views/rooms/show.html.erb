@@ -16,7 +16,7 @@
   </div>
   <div class="practice-link">
     <div class="practice-count-display">
-      <%= link_to "問題 1回目", room_question_answers_path(@room, study_count: 0) %>
+      <%= link_to "問題 1回目", room_question_answers_path(@room, study_count: 0, title: session[:search_title], word: session[:search_word]) %>
     </div>
     <div class="practice-question-count">
       <%= @study_counts[0] || 0 %>問
@@ -24,7 +24,7 @@
   </div>
   <div class="practice-link">
     <div class="practice-count-display">
-      <%= link_to "問題 2回目", room_question_answers_path(@room, study_count: 1) %>
+      <%= link_to "問題 2回目", room_question_answers_path(@room, study_count: 1, title: session[:search_title], word: session[:search_word]) %>
     </div>
     <div class="practice-question-count">
       <%= @study_counts[1] || 0 %>問
@@ -32,7 +32,7 @@
   </div>
   <div class="practice-link">
     <div class="practice-count-display">
-      <%= link_to "問題 3回目", room_question_answers_path(@room, study_count: 2) %>
+      <%= link_to "問題 3回目", room_question_answers_path(@room, study_count: 2, title: session[:search_title], word: session[:search_word]) %>
     </div>
     <div class="practice-question-count">
       <%= @study_counts[2] || 0 %>問
@@ -40,15 +40,14 @@
   </div>
   <div class="practice-link">
     <div class="practice-count-display">
-      <%= link_to "問題 4回目", room_question_answers_path(@room, study_count: 3) %>
-    </div>
+      <%= link_to "問題 4回目", room_question_answers_path(@room, study_count: 3, title: session[:search_title], word: session[:search_word]) %>    </div>
     <div class="practice-question-count">
       <%= @study_counts[3] || 0 %>問
     </div>
   </div>
   <div class="practice-link">
     <div class="practice-count-display">
-      <%= link_to "問題 5回目", room_question_answers_path(@room, study_count: 4) %>
+      <%= link_to "問題 5回目", room_question_answers_path(@room, study_count: 4, title: session[:search_title], word: session[:search_word]) %>
     </div>
     <div class="practice-question-count">
       <%= @study_counts[4] || 0 %>問
@@ -56,7 +55,7 @@
   </div>
   <div class="practice-link">
     <div class="practice-count-display">
-      <%= link_to "問題 6~10回目", room_question_answers_path(@room, study_count: "5~9") %>
+      <%= link_to "問題 6~10回目", room_question_answers_path(@room, study_count: "5~9", title: session[:search_title], word: session[:search_word]) %>
     </div>
     <div class="practice-question-count">
       <%= @study_counts.select { |key, value| key >= 5 && key < 10}.values.sum || 0 %>問
@@ -64,7 +63,7 @@
   </div>
   <div class="practice-link">
     <div class="practice-count-display">
-      <%= link_to "問題 11回目以上", room_question_answers_path(@room, study_count: "10+") %>
+      <%= link_to "問題 11回目以上", room_question_answers_path(@room, study_count: "10+", title: session[:search_title], word: session[:search_word]) %>
     </div>
     <div class="practice-question-count">
       <%= @study_counts.select { |key, value| key >= 10 }.values.sum || 0 %>問
@@ -75,18 +74,30 @@
 <br>
 
 <div class="question-create-link">
-  <%= link_to "Create Question", new_room_question_answer_path(@room) %>
+  <%= link_to "Create Question", new_room_question_answer_path(@room, title: session[:search_title], word: session[:search_word]) %>
 </div>
 
 <br><br>
 
-<%= form_with url: room_path(@room), method: :get, local: true do %>
-  <div class="search-field">
-    <%= label_tag :title, "Select a title", class: 'question_answer-search-label' %>
-    <%= select_tag :title, options_from_collection_for_select(@titles, 'title', 'title', selected: params[:title]), include_blank: true, class: 'question_answer-search-title-list' %>
-    <%= submit_tag "Search", class: 'question_answer-search-do-botton' %>
-  </div>
-<% end %>
+<div class="question_answer-search-box">
+  <%= form_with url: room_path(@room), method: :get, local: true do %>
+    <div class="search-field">
+      <%= hidden_field_tag :word, params[:word] %>
+      <%= label_tag :title, "Select a title", class: 'question_answer-search-label' %>
+      <%= select_tag :title, options_from_collection_for_select(@titles, 'title', 'title', selected: params[:title]), include_blank: true, class: 'question_answer-search-title-list' %>
+      <%= submit_tag "Title Search", class: 'question_answer-search-do-botton' %>
+    </div>
+  <% end %>
+
+  <%= form_with url: room_path(@room), method: :get, local: true do %>
+    <div class="search-field">
+      <%= hidden_field_tag :title, params[:title] %>
+      <%= label_tag :word, "Word Search", class: 'question_answer-search-label' %>
+      <%= text_field_tag :word, params[:word], class: 'question_answer-search-title-list', value: params[:word], placeholder: '' %>
+      <%= submit_tag "Word Search", class: 'question_answer-search-do-botton' %>
+    </div>
+  <% end %>
+</div>
 
 <div class="room-top-question-answer-box">
   <% @question_answers.each do |question_answer| %>
@@ -104,10 +115,10 @@
         <%= question_answer.study_count %>
       </div>
       <div class="question-edit-link">
-        <%= link_to "Edit", edit_room_question_answer_path(@room, question_answer) %>
+        <%= link_to "Edit", edit_room_question_answer_path(@room, question_answer, title: session[:search_title], word: session[:search_word]) %>
       </div>
       <div class="question-delete-link">
-        <%= link_to "Delete", room_question_answer_path(@room, question_answer), data: { turbo_method: :delete, turbo_confirm: "削除しますか？" } %>
+        <%= link_to "Delete", room_question_answer_path(@room, question_answer, title: session[:search_title], word: session[:search_word]), data: { turbo_method: :delete, turbo_confirm: "削除しますか？" } %>
       </div>
     </div>
   <% end %>

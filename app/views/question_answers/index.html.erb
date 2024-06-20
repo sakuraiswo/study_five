@@ -8,7 +8,7 @@
 </div>
 <br>
 <div class="back-link">
-  <%= link_to "Back", room_path(@room) %>
+  <%= link_to "Back", room_path(@room, title: session[:search_title], word: session[:search_word]) %>
 </div>
 <br><br>
 <div class="study-question-answer-box">
