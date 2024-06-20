@@ -15,7 +15,23 @@ worker_timeout 3600 if ENV.fetch("RAILS_ENV", "development") == "development"
 
 # Specifies the `port` that Puma will listen on to receive requests; default is 3000.
 #
-port ENV.fetch("PORT") { 3000 }
+require 'socket'
+
+def available_port(starting_port)
+  port = starting_port
+  while port < starting_port + 1000
+    begin
+      server = TCPServer.new('127.0.0.1', port)
+      server.close
+      return port
+    rescue Errno::EADDRINUSE
+      port += 1
+    end
+  end
+  raise "No available ports"
+end
+
+port ENV.fetch("PORT") { available_port(3000) }
 
 # Specifies the `environment` that Puma will run in.
 #
