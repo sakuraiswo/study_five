@@ -147,6 +147,7 @@ p {
 .question_answer-word-search-bar{
   border: solid 2px blue;
   border-radius: 10px;
+  width: 120px;
   cursor: text;
 }
 

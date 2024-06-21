@@ -32,6 +32,7 @@ class QuestionAnswersController < ApplicationController
   end
 
   def new
+    @titles = @room.question_answers.select(:title).distinct.order(:title)
     @question_answer = @room.question_answers.new
   end
 
