@@ -12,6 +12,10 @@
   margin-left: 10px;
 }
 
+.title-form-and-existing-title-box{
+  display: flex;
+  align-items: flex-end;
+}
 
 .title-form-box{
   font-size: 120%;
@@ -27,6 +31,21 @@
   border: 1px solid green;
 }
 
+.existing-title-box{
+  margin-left: 10px;
+  margin-bottom: 0px;
+  display: flex;
+  flex-direction: column;
+}
+
+.question_answer-create-copy-title-list{
+  width: 190px;
+  height: 30px;
+  font-size: 90%;
+  border: solid 1px green;
+  border-radius: 5px;
+  cursor: pointer;
+}
 
 .question-form-box{
   font-size: 120%;

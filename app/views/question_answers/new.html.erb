@@ -13,12 +13,16 @@
 <br><br>
 <%= form_with model: [@room, @question_answer], local: true do |f| %>
   <div class="question_answer-form-box">
+    <div class="title-form-and-existing-title-box">
     <div class="title-form-box">
       Title
       <%= f.text_area :title, class: 'title-form', id: 'title_text_area', placeholder: '' %>
     </div>
-    <%= label_tag :title2, "Select a title", class: 'question_answer-search-label' %>
-    <%= select_tag :title2, options_from_collection_for_select(@titles, 'title', 'title', selected: params[:title2]), include_blank: true, class: 'question_answer-search-title-list', id: 'title2_select' %>
+    <div class="existing-title-box">
+    <%= label_tag :title2, "existing title", class: 'question_answer-copy-label' %>
+    <%= select_tag :title2, options_from_collection_for_select(@titles, 'title', 'title', selected: params[:title2]), include_blank: true, class: 'question_answer-create-copy-title-list', id: 'title2_select' %>
+    </div>
+    </div>
     <div class="question-form-box">
       Question
       <%= f.text_area :question, class: 'question-form', placeholder: '' %>
