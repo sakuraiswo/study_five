@@ -128,6 +128,7 @@ p {
   font-size: 110%;
 }
 .question_answer-search-title-list{
+  min-width: 120px;
   border: solid 2px blue;
   border-radius: 10px;
   cursor: pointer;
