@@ -25,6 +25,17 @@ p {
 }
 
 
+.white-text {
+  color: white;
+}
+.enamel-green-text {
+  background: linear-gradient(to bottom right, #00c853, #006400);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
 
 /* --------------トップページ---------------- */
 
@@ -133,13 +144,13 @@ p {
   border-radius: 10px;
   cursor: pointer;
 }
-.question_answer-search-do-botton{
+.question_answer-search-do-button{
   border: solid 2px blue;
   border-radius: 10px;
   font-weight: bold;
   cursor: pointer;
 }
-.question_answer-search-do-botton:hover{
+.question_answer-search-do-button:hover{
   border: solid 2px lightblue;
   color: white;
   background-color: blue;

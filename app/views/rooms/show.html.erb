@@ -11,7 +11,9 @@
       <%= link_to "全問題", room_question_answers_path(@room) %>
     </div>
     <div class="practice-question-count">
-      <%= @question_answers.count %>問
+      <% count = @question_answers.count %>
+      <span class="<%= count.zero? ? 'white-text' : 'enamel-green-text' %>"><%= count %></span>
+      問
     </div>
   </div>
   <div class="practice-link">
@@ -19,7 +21,9 @@
       <%= link_to "1~5回目", room_question_answers_path(@room, study_count: "0~4", title: session[:search_title], word: session[:search_word]) %>
     </div>
     <div class="practice-question-count">
-      <%= @study_counts.select { |key, value| key >= 0 && key < 5}.values.sum || 0 %>問
+      <% count = @study_counts.select { |key, value| key >= 0 && key < 5}.values.sum || 0 %>
+      <span class="<%= count.zero? ? 'white-text' : 'enamel-green-text' %>"><%= count %></span>
+      問
     </div>
   </div>
   <div class="practice-link">
@@ -27,7 +31,9 @@
       <%= link_to "6~10回目", room_question_answers_path(@room, study_count: "5~9", title: session[:search_title], word: session[:search_word]) %>
     </div>
     <div class="practice-question-count">
-      <%= @study_counts.select { |key, value| key >= 5 && key < 10}.values.sum || 0 %>問
+      <% count = @study_counts.select { |key, value| key >= 5 && key < 10}.values.sum || 0 %>
+      <span class="<%= count.zero? ? 'white-text' : 'enamel-green-text' %>"><%= count %></span>
+      問
     </div>
   </div>
   <div class="practice-link">
@@ -35,7 +41,9 @@
       <%= link_to "11回目以上", room_question_answers_path(@room, study_count: "10+", title: session[:search_title], word: session[:search_word]) %>
     </div>
     <div class="practice-question-count">
-      <%= @study_counts.select { |key, value| key >= 10 }.values.sum || 0 %>問
+      <% count = @study_counts.select { |key, value| key >= 10 }.values.sum || 0 %>
+      <span class="<%= count.zero? ? 'white-text' : 'enamel-green-text' %>"><%= count %></span>
+      問
     </div>
   </div>
 </div>
@@ -48,7 +56,9 @@
       <%= link_to "問題 1回目", room_question_answers_path(@room, study_count: 0, title: session[:search_title], word: session[:search_word]) %>
     </div>
     <div class="practice-question-count">
-      <%= @study_counts[0] || 0 %>問
+      <% count = @study_counts[0] || 0 %>
+      <span class="<%= count.zero? ? 'white-text' : 'enamel-green-text' %>"><%= count %></span>
+      問
     </div>
   </div>
   <div class="practice-link">
@@ -56,7 +66,9 @@
       <%= link_to "問題 2回目", room_question_answers_path(@room, study_count: 1, title: session[:search_title], word: session[:search_word]) %>
     </div>
     <div class="practice-question-count">
-      <%= @study_counts[1] || 0 %>問
+      <% count = @study_counts[1] || 0 %>
+      <span class="<%= count.zero? ? 'white-text' : 'enamel-green-text' %>"><%= count %></span>
+      問
     </div>
   </div>
   <div class="practice-link">
@@ -64,7 +76,9 @@
       <%= link_to "問題 3回目", room_question_answers_path(@room, study_count: 2, title: session[:search_title], word: session[:search_word]) %>
     </div>
     <div class="practice-question-count">
-      <%= @study_counts[2] || 0 %>問
+      <% count = @study_counts[2] || 0 %>
+      <span class="<%= count.zero? ? 'white-text' : 'enamel-green-text' %>"><%= count %></span>
+      問
     </div>
   </div>
   <div class="practice-link">
@@ -72,7 +86,9 @@
       <%= link_to "問題 4回目", room_question_answers_path(@room, study_count: 3, title: session[:search_title], word: session[:search_word]) %>
     </div>
     <div class="practice-question-count">
-      <%= @study_counts[3] || 0 %>問
+      <% count = @study_counts[3] || 0 %>
+      <span class="<%= count.zero? ? 'white-text' : 'enamel-green-text' %>"><%= count %></span>
+      問
     </div>
   </div>
   <div class="practice-link">
@@ -80,7 +96,9 @@
       <%= link_to "問題 5回目", room_question_answers_path(@room, study_count: 4, title: session[:search_title], word: session[:search_word]) %>
     </div>
     <div class="practice-question-count">
-      <%= @study_counts[4] || 0 %>問
+      <% count = @study_counts[4] || 0 %>
+      <span class="<%= count.zero? ? 'white-text' : 'enamel-green-text' %>"><%= count %></span>
+      問
     </div>
   </div>
 </div>
@@ -99,7 +117,7 @@
       <%= hidden_field_tag :word, params[:word] %>
       <%= label_tag :title, "Select a title", class: 'question_answer-search-label' %>
       <%= select_tag :title, options_from_collection_for_select(@titles, 'title', 'title', selected: params[:title]), include_blank: true, class: 'question_answer-search-title-list' %>
-      <%= submit_tag "Title Search", class: 'question_answer-search-do-botton' %>
+      <%= submit_tag "Title Search", class: 'question_answer-search-do-button' %>
     </div>
   <% end %>
 
@@ -108,7 +126,7 @@
       <%= hidden_field_tag :title, params[:title] %>
       <%= label_tag :word, "Word Search", class: 'question_answer-search-label' %>
       <%= text_field_tag :word, params[:word], class: 'question_answer-word-search-bar', value: params[:word], placeholder: '' %>
-      <%= submit_tag "Word Search", class: 'question_answer-search-do-botton' %>
+      <%= submit_tag "Word Search", class: 'question_answer-search-do-button' %>
     </div>
   <% end %>
 </div>
