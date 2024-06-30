@@ -14,6 +14,8 @@ class QuestionAnswersController < ApplicationController
         @question_answers = @question_answers.where("study_count >= ?", 10)
       elsif params[:study_count] == '5~9'
         @question_answers = @question_answers.where(study_count: 5..9)
+      elsif params[:study_count] == '0~4'
+        @question_answers = @question_answers.where(study_count: 0..4)
       else
         @question_answers = @question_answers.where(study_count: params[:study_count])
       end

@@ -62,12 +62,16 @@
 
 
   <% else %>
-    <% if @study_count_plus1 < 6 %>
-      <p><%= @study_count_plus1 %>回目の問題が見つかりません。</p>
-    <% elsif @study_count_plus1 < 11 %>
-      <p>6~10回目の問題が見つかりません。</p>
-    <% else %>
-      <p>11回目以上の問題が見つかりません。</p>
+    <% if @study_count_plus1 %>
+      <% if params[:study_count] == '0~4' %>
+        <p>1~5回目の問題が見つかりません。</p>
+      <% elsif @study_count_plus1 < 6 %>
+        <p><%= @study_count_plus1 %>回目の問題が見つかりません。</p>
+      <% elsif @study_count_plus1 < 11 %>
+        <p>6~10回目の問題が見つかりません。</p>
+      <% else %>
+       <p>11回目以上の問題が見つかりません。</p>
+      <% end %>
     <% end %>
   <% end %>
 </div>

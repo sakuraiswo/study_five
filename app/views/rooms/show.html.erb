@@ -14,7 +14,7 @@
       <%= @question_answers.count %>問
     </div>
   </div>
-    <div class="practice-link">
+  <div class="practice-link">
     <div class="practice-count-display">
       <%= link_to "1~5回目", room_question_answers_path(@room, study_count: "0~4", title: session[:search_title], word: session[:search_word]) %>
     </div>
@@ -22,6 +22,27 @@
       <%= @study_counts.select { |key, value| key >= 0 && key < 5}.values.sum || 0 %>問
     </div>
   </div>
+  <div class="practice-link">
+    <div class="practice-count-display">
+      <%= link_to "6~10回目", room_question_answers_path(@room, study_count: "5~9", title: session[:search_title], word: session[:search_word]) %>
+    </div>
+    <div class="practice-question-count">
+      <%= @study_counts.select { |key, value| key >= 5 && key < 10}.values.sum || 0 %>問
+    </div>
+  </div>
+  <div class="practice-link">
+    <div class="practice-count-display">
+      <%= link_to "11回目以上", room_question_answers_path(@room, study_count: "10+", title: session[:search_title], word: session[:search_word]) %>
+    </div>
+    <div class="practice-question-count">
+      <%= @study_counts.select { |key, value| key >= 10 }.values.sum || 0 %>問
+    </div>
+  </div>
+</div>
+
+<br>
+
+<div class="practice-link-list">
   <div class="practice-link">
     <div class="practice-count-display">
       <%= link_to "問題 1回目", room_question_answers_path(@room, study_count: 0, title: session[:search_title], word: session[:search_word]) %>
@@ -60,22 +81,6 @@
     </div>
     <div class="practice-question-count">
       <%= @study_counts[4] || 0 %>問
-    </div>
-  </div>
-  <div class="practice-link">
-    <div class="practice-count-display">
-      <%= link_to "6~10回目", room_question_answers_path(@room, study_count: "5~9", title: session[:search_title], word: session[:search_word]) %>
-    </div>
-    <div class="practice-question-count">
-      <%= @study_counts.select { |key, value| key >= 5 && key < 10}.values.sum || 0 %>問
-    </div>
-  </div>
-  <div class="practice-link">
-    <div class="practice-count-display">
-      <%= link_to "11回目以上", room_question_answers_path(@room, study_count: "10+", title: session[:search_title], word: session[:search_word]) %>
-    </div>
-    <div class="practice-question-count">
-      <%= @study_counts.select { |key, value| key >= 10 }.values.sum || 0 %>問
     </div>
   </div>
 </div>
