@@ -7,11 +7,19 @@
 
 <div class="practice-link-list">
   <div class="practice-link">
-<div class="practice-count-display">
-    <%= link_to "全問題", room_question_answers_path(@room) %>
+    <div class="practice-count-display">
+      <%= link_to "全問題", room_question_answers_path(@room) %>
     </div>
     <div class="practice-question-count">
       <%= @question_answers.count %>問
+    </div>
+  </div>
+    <div class="practice-link">
+    <div class="practice-count-display">
+      <%= link_to "1~5回目", room_question_answers_path(@room, study_count: "0~4", title: session[:search_title], word: session[:search_word]) %>
+    </div>
+    <div class="practice-question-count">
+      <%= @study_counts.select { |key, value| key >= 0 && key < 5}.values.sum || 0 %>問
     </div>
   </div>
   <div class="practice-link">
@@ -40,7 +48,8 @@
   </div>
   <div class="practice-link">
     <div class="practice-count-display">
-      <%= link_to "問題 4回目", room_question_answers_path(@room, study_count: 3, title: session[:search_title], word: session[:search_word]) %>    </div>
+      <%= link_to "問題 4回目", room_question_answers_path(@room, study_count: 3, title: session[:search_title], word: session[:search_word]) %>
+    </div>
     <div class="practice-question-count">
       <%= @study_counts[3] || 0 %>問
     </div>
