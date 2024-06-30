@@ -5,7 +5,7 @@ class RoomsController < ApplicationController
   before_action :return_action, only: [:edit, :update, :show]
 
   def index
-    @rooms = Room.all
+    @rooms = Room.all.includes(:question_answers)
   end
 
   def new

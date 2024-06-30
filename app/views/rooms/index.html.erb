@@ -11,6 +11,9 @@
     <div class="room-link">
       ・<%= link_to room.room_name, room_path(room) %>
     </div>
+    <div class="room-link">
+      <%= "☆" if room.has_low_study_count_question_answer? %>
+    </div>
     <div class="room-edit-link">
       <%= link_to "Edit", edit_room_path(room) %>
     </div>
