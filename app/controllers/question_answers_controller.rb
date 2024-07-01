@@ -10,12 +10,13 @@ class QuestionAnswersController < ApplicationController
     @question_answers = @room.question_answers
 
     if params[:study_count]
+      time_limit = 3.hours.ago
       if params[:study_count] == '10+'
-        @question_answers = @question_answers.where("study_count >= ?", 10)
+        @question_answers = @question_answers.where("study_count >= ? AND updated_at <= ?", 10, time_limit)
       elsif params[:study_count] == '5~9'
-        @question_answers = @question_answers.where(study_count: 5..9)
+        @question_answers = @question_answers.where(study_count: 5..9).where("updated_at <= ?", time_limit)
       elsif params[:study_count] == '0~4'
-        @question_answers = @question_answers.where(study_count: 0..4)
+        @question_answers = @question_answers.where(study_count: 0..4).where("updated_at <= ?", time_limit)
       else
         @question_answers = @question_answers.where(study_count: params[:study_count])
       end
@@ -94,6 +95,7 @@ class QuestionAnswersController < ApplicationController
   def increment_study_count
     @random_question_answer = QuestionAnswer.find(params[:id])
     @random_question_answer.increment!(:study_count)
+    @random_question_answer.touch
     redirect_to room_question_answer_path(@room, @random_question_answer)
   end
 
